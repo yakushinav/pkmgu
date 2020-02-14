@@ -1,0 +1,698 @@
+\lecture{Лекция 1}{lec1}
+\subtitle{Лекция 1 --- Системы счисления}
+\frame[plain]
+{\titlepage}	% Титульный слайд
+
+	\section{Системы счисления}
+	\subsection{Основные определения}
+	
+\begin{frame}
+\frametitle{Основные определения}
+\begin{block}{Система счисления}
+  совокупность правил для записи (изображения, кодирования) чисел с помощью специальных символов (цифр).
+\end{block}
+
+\begin{block}{Цифра}
+  специальный символ для записи чисел.
+\end{block}
+
+\begin{block}{Алфавит системы счисления}
+  совокупность цифр, используемых для записи чисел.
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Основные определения}
+
+\begin{block}{Позиционная система счисления}
+  значение цифры зависит от ее позиции в коде числа.
+\end{block}
+
+\begin{block}{Непозиционная система счисления}
+  значение цифры НЕ зависит от ее позиции в коде числа.
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+
+\subsection{Позиционная система счисления}
+\frametitle{Позиционная система счисления}
+
+\begin{block}{Основание}
+  количество различных цифр, используемых для кодирования чисел.\\
+	Обозначается $p$, $p\geq 2$.
+\end{block}
+
+\begin{block}{Базис}
+  последовательность степеней основания системы счисления, задающих веса разрядов.\\
+	Основание $p$, веса $1,p,p^2,p^3, \ldots$
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Десятичная система счисления}
+	\framesubtitle{Пример}
+	
+\begin{itemize}
+\item Рассмотрим число в десятичной системе счисления, 
+$ 7086= 7\cdot 10^{3} + 0\cdot 10^{2} + 8 \cdot 10^{1}+6\cdot 10^{0} $
+
+\item Основание $p=10$.
+  
+\item 10 цифр $\{0, 1, 2, \ldots ,\, 9 \}$
+
+\end{itemize}
+
+\end{frame}
+
+\subsection{Формула разложения по степеням основания}
+\begin{frame}
+  \frametitle{Формула разложения по степеням основания}
+	
+\begin{block}{Целое число ($N \geq 1$)}
+  $$
+	a_{n}\cdot p^{n}+a_{n-1}\cdot p^{n-1}+a_{n-2}\cdot p^{n-2}+\ldots + a_{1}\cdot p+a_0=\sum_{i=0}^{n}a_i\cdot p^i
+	$$
+\end{block}
+\begin{block}{Дробное число ($0\leq N \le 1$)}
+  $$
+	a_{-1}\cdot p^{-1}+a_{-2}\cdot p^{-2}+a_{-3}\cdot p^{-3}+\ldots + a_{-m}\cdot p^{-m}=\sum_{i=-1}^{-m}a_i\cdot p^i
+	$$
+\end{block}
+
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Формула разложения по степеням основания}
+	Любое число может быть представлено как в виде кода
+	$$ 
+	N_p=\overline{\underbrace{a_n a_{n-1} a_{n-2} \cdots  a_{1} a_{0}}_{целая\; часть}, \underbrace{a_{-1} a_{-2} \cdots  a_{-m}}_{дробная\; часть}}
+	$$
+так и в виде разложения по степеням основания (в виде многочлена)
+  $$
+	N_p=\sum_{i=0}^{n}a_i\cdot p^i + \sum_{i=-1}^{-m}a_i\cdot p^i=\sum_{i=n}^{-m}a_i\cdot p^i
+	$$
+
+
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Формула разложения по степеням основания}
+	\framesubtitle{Примеры}
+	$ X=123.45_{10} $
+  $$	
+  X_{10}=1 \cdot 10^2+2\cdot 10^1+3\cdot 10^0+4\cdot 10^{-1}+5\cdot 10^{-2}
+  $$
+
+  $ X=1101.01_2	$
+	$$
+  X_2 = 1\cdot 2^3 + 1\cdot 2^2 + 0\cdot 2^1 + 1\cdot 2^0 + 0\cdot 2^{-1} + 1\cdot 2^{-2} 
+	$$
+	
+	$ X=243.36_p	$
+	$$
+  X_p = 1\cdot p^2 + 4\cdot p^1 + 3\cdot 2^0 + 3\cdot p^{-1} + 6\cdot p^{-2} 
+	$$
+	
+\end{frame}
+
+\begin{frame}
+  \frametitle{Формула разложения по степеням основания}
+	\framesubtitle{Несколько полезных следствий}
+	\begin{itemize}
+		\item $ p^k=1\underbrace{00 \ldots 00_p}_{k} $\\
+		например $$2^5=100000_2$$\\
+		         $$7^3=1000_7$$
+		\item $ p^k-1=\underbrace{ccc\ldots\ldots cc_p}_{k} $ где $c$ наибольшая цифра\\
+		например $$2^5-1=11111_2$$\\
+		         $$7^3-1=666_7$$
+	\end{itemize}
+	
+\end{frame}
+
+\subsection{Перевод из любой системы счисления в десятичную}
+\begin{frame}
+  \frametitle{Перевод из любой системы счисления в десятичную}
+	
+	$ X=1101.01_2	$
+
+	\begin{enumerate}
+	\item Отметить разряды
+	$$
+	   X=\overset{\overset{3}{}}{1}\overset{\overset{2}{}}{1}\overset{\overset{1}{}}{0}\overset{\overset{0}{}}{1}.\overset{\overset{-1}{}}{0}\;\overset{\overset{-2}{}}{1}_2
+	$$
+	\item Разложить по степеням основания
+		$$
+  X_2 = 1\cdot 2^3 + 1\cdot 2^2 + 0\cdot 2^1 + 1\cdot 2^0 + 0\cdot 2^{-1} + 1\cdot 2^{-2} 
+	$$
+	\item Выполнить вычисления в десятичной системе счисления
+	$$
+  X_2 = 8+4+0+1+0+0.25=13.25_{10} 
+	$$
+	\end{enumerate}
+  
+	
+	
+	
+	
+\end{frame}
+
+\subsection{Перевод из одной системы счисления в другую}
+\begin{frame}
+  \frametitle{Перевод из одной системы счисления в другую}
+	\framesubtitle{Целое число}
+	Пусть дано число $N$ в системе счисления с основанием $p$
+	$$
+	N_p=a_{n}\cdot p^{n}+a_{n-1}\cdot p^{n-1}+a_{n-2}\cdot p^{n-2}+\ldots + a_{1}\cdot p+a_0
+	$$	
+	Необходимо представить его в системе счисления \\ с основанием $q$
+	$$
+	X_q=b_{m}\cdot q^{m}+b_{m-1}\cdot q^{m-1}+b_{m-2}\cdot q^{m-2}+\ldots + b_{1}\cdot q+b_0
+	$$	
+	\pause
+	Первую слева цифру мы не можем найти так как не знаем сколько в числе цифр
+	
+	\pause
+	Можем найти последнюю
+	
+	
+\end{frame}
+
+\begin{frame}
+  \frametitle{Перевод из одной системы счисления в другую}
+	\framesubtitle{Целое число}
+	Пусть дано число $N$ в системе счисления с основанием $p$
+	$$
+	N_p=a_{n}\cdot p^{n}+a_{n-1}\cdot p^{n-1}+a_{n-2}\cdot p^{n-2}+\ldots + a_{1}\cdot p+a_0
+	$$	
+	Необходимо представить его в системе счисления\\ с основанием $q$
+	$$
+	X_q=b_{m}\cdot q^{m}+b_{m-1}\cdot q^{m-1}+b_{m-2}\cdot q^{m-2}+\ldots + b_{1}\cdot q+b_0
+	$$	
+	\pause
+	$$
+	X_q=\underbrace{(b_{m}\cdot q^{m}+b_{m-1}\cdot q^{m-1}+b_{m-2}\cdot q^{m-2}+\ldots + b_{1})}_{целая\; часть \;от\; деления=N_1}\cdot q+b_0
+	$$	
+	\pause
+	$$
+	X_q=N_1\cdot q+b_0
+	$$
+	
+	
+	
+\end{frame}
+
+\begin{frame}
+  \frametitle{Перевод из одной системы счисления в другую}
+	\framesubtitle{Целое число: Алгоритм}
+	$N_p=X_q$
+	\begin{enumerate}
+		\item Разделить на основание новой системы счисления
+		$$ N=q\cdot N_1+b_0 $$
+		\item Повторить шаг 1 с целой частью от деления
+		$$ N_1=q\cdot N_2+b_1 $$
+		$$ N_2=q\cdot N_3+b_2 $$
+		$$ \ldots $$
+		\item Закончить, когда $N_m < q $
+		$X_q=b_{m}\cdot q^{m}+b_{m-1}\cdot q^{m-1}+b_{m-2}\cdot q^{m-2}+\ldots + b_{1}\cdot q+b_0$
+	\end{enumerate}
+	
+	
+\end{frame}
+
+\begin{frame}
+  \frametitle{Перевод из одной системы счисления в другую}
+	\framesubtitle{Дробное число}
+	Пусть дано число $N$ в системе счисления с основанием $p$
+	$$
+	N_p=a_{-1}\cdot p^{-1}+a_{-2}\cdot p^{-2}+a_{-3}\cdot p^{-3}+\ldots + a_{-m}\cdot p^{-m}
+	$$	
+	Необходимо представить его в системе счисления \\ с основанием $q$
+	$$
+	X_q=b_{-1}\cdot q^{-1}+b_{-2}\cdot q^{-2}+b_{-3}\cdot q^{-3}+\ldots + b_{-k}\cdot q^{-k}
+	$$	
+	\pause
+	Последнюю слева цифру мы не можем найти так как не знаем сколько в числе цифр
+	
+	\pause
+	Можем найти первую
+	
+	
+\end{frame}
+
+\begin{frame}
+  \frametitle{Перевод из одной системы счисления в другую}
+	\framesubtitle{Дробное число}
+	Пусть дано число $N$ в системе счисления с основанием $p$
+	$$
+	N_p=a_{-1}\cdot p^{-1}+a_{-2}\cdot p^{-2}+a_{-3}\cdot p^{-3}+\ldots + a_{-m}\cdot p^{-m}
+	$$	
+	Необходимо представить его в системе счисления \\ с основанием $q$
+	$$
+	X_q=b_{-1}\cdot q^{-1}+b_{-2}\cdot q^{-2}+b_{-3}\cdot q^{-3}+\ldots + b_{-k}\cdot q^{-k}
+	$$	
+	\pause
+	$$
+	qX_q=b_{-1}+b_{-2}\cdot q^{-1}+b_{-3}\cdot q^{-2}+\ldots + b_{-k+1}\cdot q^{-k+1}
+	$$
+	
+	\pause
+	$qN_p=b_{-1}+N_1$
+	$$
+	qX_q=\underbrace{b_{-1}}_{цифра}+\underbrace{b_{-2}\cdot q^{-1}+b_{-3}\cdot q^{-2}+\ldots + b_{-k+1}\cdot q^{-k+1}}_{дробная \; часть}
+	$$
+	
+	
+\end{frame}
+
+\begin{frame}
+  \frametitle{Перевод из одной системы счисления в другую}
+	\framesubtitle{Дробное число: Алгоритм}
+	$N_p=X_q$
+	\begin{enumerate}
+		\item Умножить на основание новой системы счисления
+		$$ qN=b_{-1}+N_1 $$
+		\item Повторить шаг 1 с дробной частью \\
+		$ qN_1=b_{-2}+N_2 $\\
+		$ qN_2=b_{-3}+N_3 $\\
+		$ \ldots $
+		\item Закончить, когда:
+		\begin{itemize}
+			\item $N_i =0 $ или 
+			\item дробная часть повторилась или 
+			\item получено заданное количество знаков в дробной части
+		\end{itemize}
+		
+		
+	\end{enumerate}
+	
+	
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{Перевод из одной системы счисления в другую}
+	\framesubtitle{Примеры}
+	
+\begin{tabular}{cccc}
+Целое число 
+	\pause & \begin{tabular}{c|c}
+231 & 1\tabularnewline
+\pause
+115 & 1\tabularnewline
+\pause
+57 & 1\tabularnewline
+\pause
+28 & 0\tabularnewline
+\pause
+14 & 0\tabularnewline
+\pause
+7 & 1\tabularnewline
+\pause
+3 & 1\tabularnewline
+\pause
+1 & 1\tabularnewline
+\end{tabular}
+\pause & \raisebox{-0.5\height}{\includegraphics[width=0.5cm,height=4cm]{images/up.png}}
+\pause
+ & $231_{10}=11100111_2$\tabularnewline
+\end{tabular}
+
+	
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{Перевод из одной системы счисления в другую}
+	\framesubtitle{Примеры}	
+
+\begin{tabular}{cccc}
+Дробное число 
+	\pause & \begin{tabular}{c|c}
+\multicolumn{1}{c}{} & 725\tabularnewline
+\hline 
+1 & 45\tabularnewline
+\pause
+0 & 9\tabularnewline
+\pause
+1 & 8\tabularnewline
+\pause
+1 & 6\tabularnewline
+\pause
+1 & 2\tabularnewline
+\pause
+0 & 4\tabularnewline
+\pause
+0 & 8\tabularnewline
+
+\end{tabular}
+\pause & \raisebox{-0.5\height}{\includegraphics[width=0.5cm,height=4cm]{images/down.png}}
+\pause
+ & $0.725_{10}=0.101(1100)_2$\tabularnewline
+\end{tabular}
+
+	
+\end{frame}
+
+
+\subsection{Системы счисления используемые в ЭВМ}
+\begin{frame}
+  \frametitle{Системы счисления используемые в ЭВМ}
+	\huge
+	\begin{itemize}
+		\item Двоичная
+		\item Восьмеричная
+		\item Шестнадцатеричная
+	\end{itemize}
+	\normalsize
+\end{frame}
+
+\begin{frame}
+  \frametitle{Системы счисления используемые в ЭВМ}
+	\framesubtitle{Двоичная система счисления}
+	\begin{block}{Основание}
+	  $p=2$
+	\end{block}
+	\begin{block}{Цифры}
+	  $\{0, \; 1\}$
+	\end{block}
+	
+	\begin{block}{Пример числа}
+	  $100_2$
+	\end{block}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Системы счисления используемые в ЭВМ}
+	\framesubtitle{Восьмеричная система счисления}
+	\begin{block}{Основание}
+	  $p=8$
+	\end{block}
+	\begin{block}{Цифры}
+	  $\{0,1, 2, 3, 4, 5, 6, 7\}$
+	\end{block}
+	
+	\begin{block}{Пример числа}
+	  $437_8$
+	\end{block}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Системы счисления используемые в ЭВМ}
+	\framesubtitle{Шестнадцатеричная система счисления}
+	\begin{block}{Основание}
+	  $p=16$
+	\end{block}
+	\begin{block}{Цифры}
+	  $\{0,1, 2, 3, 4, 5, 6, 7, 8, 9 , \underset{10}{A}, \underset{11}{B}, \underset{12}{C}, \underset{13}{D}, \underset{14}{E}, \underset{15}{F}\}$
+	\end{block}
+	
+	\begin{block}{Пример числа}
+	  $3BF_{16}$
+	\end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Системы счисления используемые в ЭВМ}
+	\framesubtitle{Соответствие между двоичной, восьмеричной и шестнадцатеричной}
+	
+	Рассмотрим число $213_8$.
+	
+	Разложим по степеням основания $213_8=2\cdot8^2+1\cdot8+3$.\\ Для перевода в двоичную систему счисления следует выполнить все операции умножения и сложения в двоичной системе счисления. \\	
+	$10\cdot1000000+1\cdot1000+11$
+	
+	Обратим внимание, что при сложении затрагиваются только три последних разряда числа, следовательно можно перевести из восьмеричной в двоичную, просто представив восьмеричные цифры в двоичном коде, дополнив их ведущими нулями до 3-х разрядов. $213_8=\underbrace{010}_{2}\underbrace{001}_{1}\underbrace{011_2}_{3}$
+	
+	
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Системы счисления используемые в ЭВМ}
+	\framesubtitle{Соответствие между двоичной, восьмеричной и шестнадцатеричной}
+	\small
+	\begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+\hline 
+$X_{10}$ & $X_{16}$ & $X_{16}\Rightarrow X_{2}$ & $X_{8}\Rightarrow X_{2}$ & $X_{4}\Rightarrow X_{2}$\tabularnewline
+\hline 
+\hline 
+0 & 0 & 0000 & 000 & 00\tabularnewline
+\hline 
+1 & 1 & 0001 & 001 & 01\tabularnewline
+\hline 
+2 & 2 & 0010 & 010 & 10\tabularnewline
+\hline 
+3 & 3 & 0011 & 011 & 11\tabularnewline
+\hline 
+4 & 4 & 0100 & 100 & \tabularnewline
+\hline 
+5 & 5 & 0101 & 101 & \tabularnewline
+\hline 
+6 & 6 & 0110 & 110 & \tabularnewline
+\hline 
+7 & 7 & 0111 & 111 & \tabularnewline
+\hline 
+8 & 8 & 1000 &  & \tabularnewline
+\hline 
+9 & 9 & 1001 &  & \tabularnewline
+\hline 
+10 & A & 1010 &  & \tabularnewline
+\hline 
+11 & B & 1011 &  & \tabularnewline
+\hline 
+12 & C & 1100 &  & \tabularnewline
+\hline 
+13 & D & 1101 &  & \tabularnewline
+\hline 
+14 & E & 1110 &  & \tabularnewline
+\hline 
+15 & F & 1111 &  & \tabularnewline
+\hline 
+\end{tabular}
+	\end{center}
+	\normalsize
+\end{frame}
+
+\begin{frame}
+  \frametitle{Системы счисления используемые в ЭВМ}
+	\framesubtitle{Соответствие между двоичной, восьмеричной и шестнадцатеричной}
+	$$ 1101010100111_2$$
+	
+	$$ \underbrace{01}_{1}\underbrace{10}_{2}\underbrace{10}_{2}\underbrace{10}_{2}\underbrace{10}_{2}\underbrace{01}_{1}\underbrace{11}_{3} =1222213_4 $$
+	
+	$$ \underbrace{001}_{1}\underbrace{101}_{5}\underbrace{010}_{2}\underbrace{100}_{4}\underbrace{111}_{7} = 15247_8 $$
+	
+	$$ \underbrace{0001}_{1}\underbrace{1010}_{A}\underbrace{1010}_{A}\underbrace{0111}_{7} =1AA7_{16} $$
+\end{frame}
+
+
+\subsection{Двоичная система счисления}
+
+\begin{frame}
+  \frametitle{Двоичная система счисления}
+	\framesubtitle{Арифметические операции}
+	
+	\begin{tabular}{cc}
+ 
+Таблица сложения & Таблица умножения \tabularnewline
+
+\begin{tabular}{|c|c|c|}
+\hline 
++ & 0 & 1\tabularnewline
+\hline 
+0 & 0 & 1\tabularnewline
+\hline 
+1 & 1 & 10\tabularnewline
+\hline 
+\end{tabular} & %
+\begin{tabular}{|c|c|c|}
+\hline 
+{*} & 0 & 1\tabularnewline
+\hline  
+0 & 0 & 0\tabularnewline
+\hline 
+1 & 0 & 1\tabularnewline
+\hline 
+\end{tabular}\tabularnewline
+  &   \tabularnewline
+ \begin{tabular}{cr}
+\multirow{2}{*}{+} & \texttt{110111}\tabularnewline
+ & \texttt{1011}\tabularnewline
+\cline{2-2} 
+ & \texttt{1000010}\tabularnewline
+\end{tabular} & %
+\begin{tabular}{cr}
+\multirow{2}{*}{{*}} & \texttt{1011}\tabularnewline
+ & \texttt{101}\tabularnewline
+\cline{2-2} 
+ & \texttt{1011}\tabularnewline
+ & \texttt{0000\textcolor[rgb]{1,1,1}{0}}\tabularnewline
+ & \texttt{1011\textcolor[rgb]{1,1,1}{00}}\tabularnewline
+\cline{2-2} 
+ & \texttt{110111}\tabularnewline
+\end{tabular}\tabularnewline
+\end{tabular}
+	
+\end{frame}
+
+\begin{frame}
+  \frametitle{Двоичная система счисления}
+	\framesubtitle{Прямой, обратный и дополнительный код}
+	\begin{block}{Прямой код}
+	исходное двоичное число. (модуль в случае отрицательного)
+	\end{block}
+	\begin{block}{Обратный код}
+	инвертированный прямой код (то есть единицы заменены нулями, а нули --- единицами).
+	\end{block}
+	
+	\begin{block}{Дополнительный код}
+	  обратный код, увеличенный на единицу.
+	\end{block}
+	
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Двоичная система счисления}
+	\framesubtitle{Представление отрицательных чисел в компьютере}
+	Пусть будет $4$ бита в коде. Забираем 1 бит под знак. Получаем $3$ значащих разряда.\\
+	$x=-5$\\ \pause
+
+	\begin{tabular}{rl}
+ Прямой код (П) & $0101$\tabularnewline
+Обратный код (О) & $1010$\tabularnewline
+Дополнительный код (Д)  & $1011$ \tabularnewline 
+\end{tabular}\\  
+
+\pause
+	Для $n$ разрядов П+Д=$2^n$. $0101+1011=1\underbrace{0000}_{4}=0000$\\
+	Ведущая $1$ отбрасывается (переполнение разрядности).\\  	 
+	
+\end{frame}
+
+\begin{frame}
+  \frametitle{Двоичная система счисления}
+	\framesubtitle{Представление отрицательных чисел в компьютере}
+	Рассмотрим числовую прямую. 
+	\small
+	\begin{tabular}{cccccccc|cccccccc}
+0 & 1 & 2 & 3 & 4 & \textcolor[rgb]{1,0,0}{5} & 6 & 7 & 8 & 9 & \textcolor[rgb]{1,0,0}{10} & \textcolor[rgb]{1,0,0}{11} & 12 & 13 & 14 & 15\tabularnewline
+-8 & -7 & -6 & -5 & -4 & -3 & -2 & -1 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7\tabularnewline
+ &  &  &  &  & \textcolor[rgb]{1,0,0}{П} &  &  &  &  & \textcolor[rgb]{1,0,0}{О} & \textcolor[rgb]{1,0,0}{Д} &  &  &  & \tabularnewline
+\multicolumn{8}{c|}{Отрицательные} & \multicolumn{8}{c}{Положительные}\tabularnewline
+\end{tabular}
+	 \normalsize
+	Отрицательное число $x$, таким образом хранится как $2^n-|x|$. ($-5\Rightarrow 16-5$)
+	
+	Для $n$ разрядов получаем:\\
+	Положительные числа: $0\ldots 2^n-1$ ($n=4, [0..15]$)\\
+	Отрицательные числа: $-2^{n-1}\ldots 2^{n-1}-1$ ($n=4, [-8..7]$)
+	
+\end{frame}
+
+\begin{frame}
+  \frametitle{Двоичная система счисления}
+	\framesubtitle{Сложение и вычитание степеней}
+	\pause
+	Рассмотрим выражение при $n>k$ $$2^n+2^k=1\underbrace{00\ldots 0}_{n-k-1}1\underbrace{00\ldots0}_{k} $$.
+	\pause
+	Рассмотрим выражение при $n>k$ $$2^n-2^k=\underbrace{11\ldots 11}_{n-k}\underbrace{00\ldots0}_{k} $$.
+	
+	
+\end{frame}
+
+\subsection{Примеры решения задач}
+
+\begin{frame}
+  \frametitle{Примеры решения задач}
+	\begin{block}{Задача}
+	Перечислите через запятую в порядке возрастания все десятичные числа, не превосходящие $40$, запись которых в двоичной системе заканчивается на $011$.
+
+	\end{block}
+	\pause
+	\begin{block}{Решение}
+Выпишем двоичные числа, которые оканчиваются на $011$ и их десятичное представление:
+
+\begin{tabular}{r|l}
+0 & 011=3\tabularnewline
+1 & 011=11\tabularnewline
+10 & 011=19\tabularnewline
+11 & 011=27\tabularnewline
+100 & 011=35\tabularnewline
+101 & 011=43\tabularnewline
+\end{tabular}
+
+
+	\end{block}
+	
+\end{frame}
+
+\begin{frame}
+  \frametitle{Примеры решения задач}
+	\begin{block}{Задача}
+	Укажите наибольшее четырёхзначное восьмеричное число, двоичная запись которого содержит 4 единицы. В ответе запишите только само восьмеричное число, основание системы счисления указывать не нужно.
+	\end{block}
+	\pause
+	\begin{block}{Решение}
+Если мы хотим получить наибольшее, то значащие 1 должны идти в начале числа. \\
+Если восьмеричное число содержит 4 разряда, то его двоичное представление содержит от 10 до 12 разрядов.
+
+Наибольшее: $111100000000_2=7400_8$\\ \pause
+Наименьшее: $001000000111_2=1007_8$\\
+
+	\end{block}
+	
+\end{frame}
+
+\begin{frame}
+  \frametitle{Примеры решения задач}
+	\begin{block}{Задача}
+	Решите уравнение $103_x+11_{10}=103_{x+1}$ . Ответ запишите в десятичной системе счисления. 
+	\end{block}
+	\pause
+	\begin{block}{Решение}
+Переведем все в десятичную.
+$$ x^2+3+11=(x+1)^2+3$$
+$$ x^2+14=x^2+2x+1+3$$
+$$ 2x=10 $$
+$$ x=5 $$
+	\end{block}
+	
+\end{frame}
+
+\begin{frame}
+  \frametitle{Примеры решения задач}
+	\begin{block}{Задача}
+	Сколько единиц в двоичной записи числа $4^{2018} + 8^{305} – 2^{130} – 120$
+	\end{block}
+	\begin{block}{Решение}
+	\begin{enumerate}
+	\pause
+	\item Переведем все к одной степени $2^{4036} + 2^{915} – 2^{130} – 2^7+2^3$
+	\pause
+	\item Установим чередование знаков $2^{4036} + 2^{915} +2^{130} - 2^{130}– 2^{130} – 2^7+2^3=$\\
+	$=2^{4036} + 2^{915} -2^{130} - 2^{130}+2^{130} – 2^7+2^3=2^{4036} + 2^{915} -2^{131} + 2^{130} – 2^7+2^3$
+	\pause
+	\item Подсчет
+     $\underbrace{2^{4036}}_{1} + \underbrace{2^{915} -2^{131}}_{915-131} + \underbrace{2^{130} – 2^7}_{130-7}+\underbrace{2^3}_{1}$
+		\pause
+		\item Ответ: 909
+	\end{enumerate}
+	\pause
+	
+	В общем случае 
+	$$
+	-2^n=-2^{n+1}+2^n
+	$$
+	
+	\end{block}
+	
+\end{frame}

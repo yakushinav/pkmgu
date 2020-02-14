@@ -1,0 +1,235 @@
+\documentclass[11pt]{beamer}  % [t], [c], или [b] --- вертикальное выравнивание на слайдах (верх, центр, низ)
+%\documentclass[handout]{beamer} % Раздаточный материал (на слайдах всё сразу)
+%\documentclass[aspectratio=169]{beamer} % Соотношение сторон
+
+%\usetheme{Berkeley} % Тема оформления
+%\usetheme{Bergen}
+%\usetheme{Szeged}
+
+%\usecolortheme{beaver} % Цветовая схема
+%\useinnertheme{circles}
+%\useinnertheme{rectangles}
+
+\usepackage{CS-theme/beamerthemeCS} % Подгружаем тему
+%\usetheme{Warsaw} % Подгружаем тему
+ 
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+%% Beamer по-русски
+\newtheorem{rtheorem}{Теорема}
+\newtheorem{rproof}{Доказательство}
+\newtheorem{rexample}{Пример}
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+\usepackage{cancel}
+
+%% Номера формул
+%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+%\usepackage{leqno} % Нумерация формул слева
+
+%% Свои команды
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+
+%%% Программирование
+\usepackage{etoolbox} % логические операторы
+
+%%% Другие пакеты
+\usepackage{lastpage} % Узнать, сколько всего страниц в документе.
+\usepackage{soul} % Модификаторы начертания
+\usepackage{csquotes} % Еще инструменты для ссылок
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+\usepackage{multicol} % Несколько колонок
+
+%%% Картинки
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{arrows,positioning} 
+\setlength{\parskip}{\baselineskip} 
+\usetikzlibrary{arrows,decorations.text, chains,positioning,fit,calc,
+  shapes.symbols,shapes.misc,shapes.geometric,
+  shadows,backgrounds}
+	
+% Definition of circles
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+
+\colorlet{circle edge}{blue!50}
+\colorlet{circle area}{blue!20}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}	
+
+
+
+\usepackage{stackengine}
+\usepackage{multirow}
+\usepackage{listings}
+\lstloadlanguages{bash,c}
+
+\lstset{escapechar=`,
+	extendedchars=false,
+	language=sh,
+	frame=none,
+	tabsize=2, 
+	columns=fullflexible, 
+%	basicstyle=\scriptsize,
+	keywordstyle=\color{blue}, 
+	commentstyle=\itshape\color{brown},
+%	identifierstyle=\ttfamily, 
+	stringstyle=\mdseries\color{black}, 
+	showstringspaces=false, 
+	numbers=left, 
+	numberstyle=\tiny, 
+	breaklines=true, 
+	inputencoding=utf8,
+	keepspaces=true,
+	morekeywords={u\_short, u\_char, u\_long, in\_addr}
+	}
+
+\definecolor{darkgreen}{cmyk}{0.7, 0, 1, 0.5}
+
+\lstdefinelanguage{diff}
+{
+    morekeywords={+, -},
+    sensitive=false,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morecomment=[l][\color{darkgreen}]{+},
+    morecomment=[l][\color{red}]{-},
+    morestring=[b]",
+}
+
+\definecolor{mGreen}{rgb}{0,0.6,0}
+\definecolor{mGray}{rgb}{0.5,0.5,0.5}
+\definecolor{mPurple}{rgb}{0.58,0,0.82}
+\definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{CStyle}{
+    backgroundcolor=\color{backgroundColour},   
+    commentstyle=\color{mGreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{mGray},
+    stringstyle=\color{mPurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    language=C
+}
+\colorlet{lightblue}{white!25!blue}
+\newcommand{\WHILE}{\mbox{\sf \textcolor{lightblue}{while}}\;}
+\newcommand{\DO}{\;\mbox{\sf\textcolor{lightblue}{do}}\;}
+\newcommand{\AND}{\;\mbox{\sf\textcolor{lightblue}{and}}\;}
+\newcommand{\OR}{\;\mbox{\sf\textcolor{lightblue}{or}}\;}
+\newcommand{\WAIT}{\;\mbox{\sf\textcolor{lightblue}{wait}}\;}
+\newcommand{\IF}{\;\mbox{\sf\textcolor{lightblue}{if}}\;}
+\newcommand{\THEN}{\;\mbox{\sf\textcolor{lightblue}{then}}\;}
+\newcommand{\ELSE}{\;\mbox{\sf\textcolor{lightblue}{else}}\;}
+\newcommand{\BEGIN}{\;\mbox{\sf\textcolor{lightblue}{begin}}\;}
+\newcommand{\END}{\mbox{\sf\textcolor{lightblue}{end}}\;}
+\newcommand{\pair}[2]{\langle #1,\; #2 \rangle}
+\newcommand{\SKIP}{\mbox{\sf\textcolor{lightblue}{skip}}\;}
+\newcommand{\TRUE}{\mbox{\sf\textcolor{lightblue}{true}}\;}
+\newcommand{\FALSE}{\mbox{\sf\textcolor{lightblue}{false}}\;}
+\newcommand{\AWAIT}{\mbox{\sf\textcolor{lightblue}{await}}\;}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\turn}{\mbox{\em turn}}
+\newcommand{\ass}{:=}
+\newcommand{\para}{\mid\mid}
+\newcommand{\tab}[3]{\multicolumn{#1}{l}{}&
+                     \multicolumn{#2}{l}{{#3}}}
+\newcommand{\pic}{$\pi$-calculus}
+\newcommand{\acquire}{\mathop{\mathit{acquire}}}
+\newcommand{\release}{\mathop{\mathit{release}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\assert}[1]{{\textcolor{violet}{\{#1\}}}}
+\newcommand{\actif}{\mathop{\it actif}}
+\newcommand{\tour}{\mathop{\it turn}}
+\newcommand{\CO}{\mathit{pc}}
+
+\usepackage{xcolor}
+
+\definecolor{sqBlue}{RGB}{218,234,233}
+\definecolor{ballBlue}{RGB}{40,156,156}
+
+\usepackage{epstopdf}
+
+\newcommand{\red}{}
+\newcommand{\green}{}
+
+\begin{document}
+\title{Подготовительные курсы: Информатика}
+
+\author{А.В. Якушин}
+\date{\today}
+\institute[ВМК МГУ им. М.В. Ломоносова]{ВМК МГУ им. М.В. Ломоносова}
+
+
+ 
+%\includeonlylecture{lec6} % Можно поместить это в преамбулу
+%\input{intro}
+%\input{L01_slides}
+%\input{L02_slides}
+%\input{L03_slides}
+%\input{L04_slides}
+%\input{L05_slides}
+%\input{L06_slides}
+%\input{L07_slides}
+\input{L08_slides}
+%\input{L09_slides}
+%\input{homework02}
+%\input{L10_slides}
+%\input{L11_slides}
+%\input{L12_slides}
+%\input{L13_slides}
+%\input{L14_slides}
+%\input{L15_slides}
+%\input{L16_slides}
+%\input{L17_slides}
+%\input{L18_slides}
+%\input{L19_slides}
+%\input{L20_slides}
+%\input{L21_slides}
+%\input{L22_slides}
+%\input{L23_slides}
+%\input{L24_slides}
+%\input{L25_slides}
+%\input{L26_slides}
+%\input{L27_slides}
+%\input{L28_slides}
+%\input{L29_slides}
+%\input{L30_slides}
+
+\end{document}

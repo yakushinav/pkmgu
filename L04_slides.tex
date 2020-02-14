@@ -1,0 +1,732 @@
+\lecture{Лекция 4}{lec4}
+\subtitle{Лекция 4 --- Алгебра логики. Часть 1}
+
+\frame[plain]
+{\titlepage}	% Титульный слайд
+
+
+\begin{frame}
+\frametitle{Алгебра логики}
+
+\begin{center}
+
+\Huge
+Основные понятия
+	
+\end{center}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Алгебра логики}
+
+\textbf{Алгебра логики (алгебра высказываний)}~--- раздел математической
+логики, в котором изучаются логические операции над высказываниями. 
+
+\pause
+Чаще
+всего предполагается, что высказывания могут быть только истинными или
+ложными, то есть используется так~называемая \emph{бинарная} или
+\emph{двоичная} логика, в отличие от, например, троичной логики.
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Высказывания}
+
+Высказывание в логике --- это повествовательное предложение, содержание которого может быть или истинным, или ложным.
+
+\pause
+Логические константы <<истина>> и <<ложь>> называют истинностными значениями высказывания.
+
+\pause
+Обозначения логических констант:\\
+<<истина>> ---  И (Истина), T (true), 1 (единица);\\
+<<ложь>> ---  Л (Ложь), F (False),  0 (ноль).
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Высказывания}
+
+Высказывания принято обозначать заглавными буквами латинского алфавита, само содержание высказывания записывают в фигурных скобках.
+\pause
+\begin{block}{Пример высказывания}
+ $$ A=\{ 3=2 \}$$
+\end{block}
+\pause
+\begin{block}{Пример не высказывания}
+ Сегодня идет дождь\\
+ Волга впадает в Каспийское море
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Высказывания}
+
+Высказывания бывают:
+\begin{enumerate}
+	\item простые (элементарные, атомарные);
+	\item составные --- составленные комбинации из простых высказываний посредством логических связок. 
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Логическая функция}
+
+Логическая функция~--- это отображение вида $f: \{0, 1\}^n \rightarrow {0, 1}$, где $n$~---
+число булевых переменных. В общем случае это скалярная функция векторного переменного.\pause
+
+Логическая функция зависит от набора аргументов и принимает значения 0 или 1.\pause
+
+Логическая функция это составное высказывание истинность компонентов которого меняется.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Таблица истинности}
+
+Таблица истинности --- таблица, описывающая логическую функцию. \pause
+
+Таблица истинности --- таблица, которая показывает, какие значения примет логическая функция при всех возможных наборах значений простых выражений, входящих в него.\pause
+
+Если имеется функция $f(x_1, x_2, \ldots, x_n)$, то вектор, представляющий эту функцию, будет единственным и иметь длину $2^n$.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Таблица истинности}
+
+В таблице, задающей булеву функцию от $n$ переменных, должно быть ровно $2^n$ строки~--- как раз
+столько различных значений может принимать набор из $n$ переменных. \pause
+
+Наборы значений переменных 
+принято выписывать в \textit{лексикографическом порядке} (по возрастанию).
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Таблица истинности}
+\framesubtitle{Правило заполнения}
+В первом столбце: половина 0, половина 1, во втором половина 0, половина 1 в каждой половине и т.д.
+
+\only<1>{
+\begin{tabular}{|c|c|c|}
+\hline 
+x & y & z\tabularnewline
+\hline 
+\hline 
+ &  & \tabularnewline
+\hline 
+ &  & \tabularnewline
+\hline 
+ &  & \tabularnewline
+\hline 
+ &  & \tabularnewline
+\hline 
+ &  & \tabularnewline
+\hline 
+ &  & \tabularnewline
+\hline 
+ &  & \tabularnewline
+\hline 
+ &  & \tabularnewline
+\hline 
+\end{tabular}
+}
+\only<2>{
+\begin{tabular}{|c|c|c|}
+\hline 
+x & y & z\tabularnewline
+\hline 
+\hline 
+0 &  & \tabularnewline
+\hline 
+0 &  & \tabularnewline
+\hline 
+0 &  & \tabularnewline
+\hline 
+0 &  & \tabularnewline
+\hline 
+ &  & \tabularnewline
+\hline 
+ &  & \tabularnewline
+\hline 
+ &  & \tabularnewline
+\hline 
+ &  & \tabularnewline
+\hline 
+\end{tabular}
+}
+\only<3>{
+\begin{tabular}{|c|c|c|}
+\hline 
+x & y & z\tabularnewline
+\hline 
+\hline 
+0 &  & \tabularnewline
+\hline 
+0 &  & \tabularnewline
+\hline 
+0 &  & \tabularnewline
+\hline 
+0 &  & \tabularnewline
+\hline 
+1 &  & \tabularnewline
+\hline 
+1 &  & \tabularnewline
+\hline 
+1 &  & \tabularnewline
+\hline 
+1 &  & \tabularnewline
+\hline 
+\end{tabular}
+}
+\only<4>{
+\begin{tabular}{|c|c|c|}
+\hline 
+x & y & z\tabularnewline
+\hline 
+\hline 
+0 & 0 & \tabularnewline
+\hline 
+0 & 0 & \tabularnewline
+\hline 
+0 & 1 & \tabularnewline
+\hline 
+0 & 1 & \tabularnewline
+\hline 
+1 &  & \tabularnewline
+\hline 
+1 &  & \tabularnewline
+\hline 
+1 &  & \tabularnewline
+\hline 
+1 &  & \tabularnewline
+\hline 
+\end{tabular}
+}
+\only<5>{
+\begin{tabular}{|c|c|c|}
+\hline 
+x & y & z\tabularnewline
+\hline 
+\hline 
+0 & 0 & \tabularnewline
+\hline 
+0 & 0 & \tabularnewline
+\hline 
+0 & 1 & \tabularnewline
+\hline 
+0 & 1 & \tabularnewline
+\hline 
+1 & 0 & \tabularnewline
+\hline 
+1 & 0 & \tabularnewline
+\hline 
+1 & 1 & \tabularnewline
+\hline 
+1 & 1 & \tabularnewline
+\hline 
+\end{tabular}
+}
+\only<6>{
+\begin{tabular}{|c|c|c|}
+\hline 
+x & y & z\tabularnewline
+\hline 
+\hline 
+0 & 0 & 0\tabularnewline
+\hline 
+0 & 0 & 1\tabularnewline
+\hline 
+0 & 1 & \tabularnewline
+\hline 
+0 & 1 & \tabularnewline
+\hline 
+1 & 0 & \tabularnewline
+\hline 
+1 & 0 & \tabularnewline
+\hline 
+1 & 1 & \tabularnewline
+\hline 
+1 & 1 & \tabularnewline
+\hline 
+\end{tabular}
+}
+\only<7>{
+\begin{tabular}{|c|c|c|}
+\hline 
+x & y & z\tabularnewline
+\hline 
+\hline 
+0 & 0 & 0\tabularnewline
+\hline 
+0 & 0 & 1\tabularnewline
+\hline 
+0 & 1 & 0\tabularnewline
+\hline 
+0 & 1 & 1\tabularnewline
+\hline 
+1 & 0 & 0\tabularnewline
+\hline 
+1 & 0 & 1\tabularnewline
+\hline 
+1 & 1 & 0\tabularnewline
+\hline 
+1 & 1 & 1\tabularnewline
+\hline 
+\end{tabular}
+}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Таблица истинности}
+
+Пример для функции трех переменных: $f(x,y,z)$ (функция большинства)
+
+\begin{tabular}{|c|c|c|c|}
+\hline 
+x & y & z & f(x,y,z)\tabularnewline
+\hline 
+0 & 0 & 0 & 0\tabularnewline
+\hline 
+0 & 0 & 1 & 0\tabularnewline
+\hline 
+0 & 1 & 0 & 0\tabularnewline
+\hline 
+0 & 1 & 1 & 1\tabularnewline
+\hline 
+1 & 0 & 0 & 0\tabularnewline
+\hline 
+1 & 0 & 1 & 1\tabularnewline
+\hline 
+1 & 1 & 0 & 1\tabularnewline
+\hline 
+1 & 1 & 1 & 1\tabularnewline
+\hline 
+\end{tabular}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+
+\frametitle{Алгебра логики}
+
+\begin{center}
+
+\Huge
+Логические операции	
+\end{center}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Отрицание}
+
+Отрицанием высказывания А называется новое высказывание, образованное из данного с помощью логической связки~«не~…»~(«неверно, что…»), и принимающее ложное значение, когда А истинно и наоборот.
+
+Обозначение: $\overline{x}$ или $\neg x$
+
+Таблица истинности
+
+\begin{tabular}{|c|c|}
+\hline 
+x & $\overline{x}$\tabularnewline
+\hline 
+0 & 1\tabularnewline
+\hline 
+1 & 0\tabularnewline
+\hline 
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Конъюнкция}
+
+Конъюнкция (логиеское И) двух высказываний истинна тогда и только тогда, когда оба высказывания истинны.
+
+Обозначение: $x\wedge y$ или $xy$, $x*y$, $x\&y$, $x\cap y$.
+
+Таблица истинности
+
+\begin{tabular}{|c|c|c|}
+\hline
+$A$ & $B$ & $A \wedge B$\\
+\hline
+\hline
+\red{0} & \red{0} & \red{0}\\
+\hline
+\red{0} & \green{1} & \red{0}\\
+\hline
+\green{1} & \red{0} & \red{0}\\
+\hline
+\green{1} & \green{1} & \green{1}\\
+\hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Дизъюнкция}
+
+Дизъюнкиция (логиеское ИЛИ) двух высказываний истинна когда хотябы одно высказывание истинно истинны.
+
+Обозначение: $x\vee y$ или $x+y$, $x||y$, $x\cup y$.
+
+Таблица истинности
+
+\begin{tabular}{|c|c|c|}
+\hline
+$A$ & $B$ & $A \vee B$\\
+\hline
+\hline
+\red{0} & \red{0} & \red{0}\\
+\hline
+\red{0} & \green{1} & \red{1}\\
+\hline
+\green{1} & \red{0} & \red{1}\\
+\hline
+\green{1} & \green{1} & \green{1}\\
+\hline
+\end{tabular}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Импликация}
+
+Импликация (ЕСЛИ ... ТО, логический вывод) двух высказываний ложна, когда посылка истинна, а заключение ложно.
+
+Обозначение: $x\rightarrow y$.
+
+Таблица истинности
+
+\begin{tabular}{|c|c|c|}
+\hline
+$A$ & $B$ & $A \rightarrow B$\\
+\hline
+\hline
+\red{0} & \red{0} & \red{1}\\
+\hline
+\red{0} & \green{1} & \red{1}\\
+\hline
+\green{1} & \red{0} & \red{0}\\
+\hline
+\green{1} & \green{1} & \green{1}\\
+\hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Тождество}
+
+Тождество (эквивалентность, А тоже самое что В) двух высказываний истинна, когда оба высказывания принимают одинаковые значения истинности.
+
+Обозначение: $x\equiv y$ или $x \sim y$.
+
+Таблица истинности
+
+\begin{tabular}{|c|c|c|}
+\hline
+$A$ & $B$ & $A \equiv B$\\
+\hline
+\hline
+\red{0} & \red{0} & \red{1}\\
+\hline
+\red{0} & \green{1} & \red{0}\\
+\hline
+\green{1} & \red{0} & \red{0}\\
+\hline
+\green{1} & \green{1} & \green{1}\\
+\hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Исключающее ИЛИ}
+
+Исключающее ИЛИ (анти эквивалентность, А не тоже самое что В) двух высказываний истинна, когда оба высказывания принимают разные значения истинности.
+
+Обозначение: $x \oplus y$.
+
+Таблица истинности
+
+\begin{tabular}{|c|c|c|}
+\hline
+$A$ & $B$ & $A \oplus B$\\
+\hline
+\hline
+\red{0} & \red{0} & \red{0}\\
+\hline
+\red{0} & \green{1} & \red{1}\\
+\hline
+\green{1} & \red{0} & \red{1}\\
+\hline
+\green{1} & \green{1} & \green{0}\\
+\hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Логические функции: перечисление}
+
+Важное свойство булевых функции~--- их число конечно для заданного $n$ и равно
+$2^{2^n}$. То есть, каждая функция может быть задана своей \emph{таблицей истинности} или просто
+\emph{пронумерована}.  
+
+При $n = 0$ существует только две функции-константы: 0 и 1.
+
+Рассмотрим все функции для $n = 1$:
+
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    $x$ & $f_1$ & $f_2$ & $f_3$ & $f_4$\\ \hline
+    0 & 0 & 0 & 1 & 1\\ \hline
+    1 & 0 & 1 & 0 & 1\\ \hline
+  \end{tabular}
+\end{center}
+
+$f_1(x) = 0, f_4(x) = 1$~--- константы, $f_2(x) = x$~--- тождественная функция, $f_3(x) =
+\overline{x}$~--- отрицание.
+\end{frame}
+
+\begin{frame}
+\frametitle{Логические функции: перечисление}
+Рассмотрим все функции для $n = 2$: \\ \scriptsize
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    x & y & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16\\ \hline
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\ \hline
+    0 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1\\ \hline
+    1 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1\\ \hline
+    1 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1\\ \hline
+  \end{tabular}
+\normalsize
+$f_1(x, y) = 0, f_{16}(x, y) = 1$~--- константы, \\ \pause
+$f_2(x, y) =x~\wedge~y$, $f_{15}(x, y) =\overline{x~\wedge~y}$(штрих Шеффера)  \\\pause
+$f_8(x, y) = x~\vee~y$, $f_9(x, y) = \overline{x~\vee~y}$(стрелка Пирса)\\\pause
+$f_7(x, y) = x~\oplus~y$, $f_{10}(x, y) = x~\equiv~y$\\\pause
+$f_{14}(x, y) =x~\rightarrow~y$,$f_{3}(x, y) =\overline{x~\rightarrow~y}$  \\ \pause
+$f_{12}(x, y) =y~\rightarrow~x$,$f_{5}(x, y) =\overline{y~\rightarrow~x}$  \\ \pause
+
+Таким образом, каждая булева функция может быть представлена как в виде таблицы истинности,
+так и в виде формулы. 
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Catch phrase логических операций}
+
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline 
+Операция & Catch phrase \tabularnewline
+\hline 
+\hline 
+$\overline{\textcolor[rgb]{1,1,1}{x}}$ & НЕ A \pause \tabularnewline 
+\hline 
+$\wedge$ & A И B \pause \tabularnewline 
+\hline 
+$\vee$ & A ИЛИ B  \pause \tabularnewline 
+\hline 
+$\oplus$ & ИЛИ A ИЛИ В \pause \tabularnewline 
+\hline 
+$\rightarrow$ & ЕСЛИ А ТО B, А ВЛЕЧЕТ В  \pause \tabularnewline
+\hline 
+$\equiv$ & А ТОГДА И ТОЛЬКО ТОГДА КОГДА B \tabularnewline  
+\hline 
+\end{tabular}\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Приоритет логических операций}
+
+Сначала выполняется операция с самым низким приоритетом.
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline 
+Приоритет & Операция & Описание\tabularnewline
+\hline 
+0 & $\overline{x}$ & Отрицание \tabularnewline
+\hline 
+1 & $\wedge$ & Конъюнкция\tabularnewline
+\hline 
+2 & $\vee,\oplus$ & Дизъюнкция, Исключающее ИЛИ\tabularnewline
+\hline 
+3 & $\rightarrow$ & Импликация \tabularnewline
+\hline 
+4 & $\equiv$ & Тождество\tabularnewline
+\hline 
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Приоритет логических операций}
+\framesubtitle{Пример}
+
+\only<1>{$$ \overline{x} \rightarrow (x \vee \overline{y} \wedge z) $$}
+\only<2>{ $$ \underbrace{\overline{x}}_{1} \rightarrow (x \vee \underbrace{\overline{y}}_{2} \wedge z) $$}
+\only<3>{ $$ \underbrace{\overline{x}}_{1} \rightarrow (x \vee \underbrace{\underbrace{\overline{y}}_{2} \wedge z}_{3}) $$}
+\only<4>{ $$ \underbrace{\overline{x}}_{1} \rightarrow (\underbrace{x \vee \underbrace{\underbrace{\overline{y}}_{2} \wedge z}_{3}}_{4}) $$}
+\only<5>{ $$ \underbrace{\underbrace{\overline{x}}_{1} \rightarrow (\underbrace{x \vee \underbrace{\underbrace{\overline{y}}_{2} \wedge z}_{3}}_{4})}_{5} $$}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile,squeeze]{Таблица истинности}
+Рассмотрим формулу $F(x_1,x_2,x_3) = {\bar x}_1 \wedge (x_2\oplus x_3)$ 
+Составим таблицу истинности~--- сначала выпишем столбец ${\bar x}_1$, затем столбец $(x_2\oplus x_3)$,
+а затем конъюнкцию этих двух столбцов.
+
+\medskip
+\begin{tabular}{|c|c|c||c|c|c|}
+  \hline
+  $x_1$ & $x_2$ & $x_3$ & $\bar x_1$ & $x_2\oplus x_3$ & $F$ \\
+  \hline
+   0  &  0  & 0         & 1          &  0              & 0 \\
+   0  &  0  & 1         & 1          &  1              & 1 \\
+   0  &  1  & 0         & 1          &  1              & 1 \\
+   0  &  1  & 1         & 1          &  0              & 0 \\
+   1  &  0  & 0         & 0          &  0              & 0 \\
+   1  &  0  & 1         & 0          &  1              & 0 \\
+   1  &  1  & 0         & 0          &  1              & 0 \\
+   1  &  1  & 1         & 0          &  0              & 0 \\
+  \hline
+\end{tabular}
+\end{frame}
+
+\begin{frame}
+\frametitle{Алгебра логики}
+\begin{center}
+
+\Huge
+Законы (формулы) алгебры логики
+\end{center}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Основные законы алгебры логики}
+Закон двойного отрицания: $ \overline{\overline{x}}=x $  \pause
+
+Коммутативность:\\
+ $ A \vee B = B \vee A$\\
+ $ A \wedge B = B \wedge A$\\ \pause
+
+Ассоциативность:\\
+ $ A \vee (B \vee C) = (A \vee B) \vee C$\\
+ $ A \wedge (B \wedge C) = (A \wedge B) \wedge C$\\ \pause
+
+Дистибутивность:\\
+$ A \wedge (B \vee C) = (A \wedge B) \vee (A\wedge C)$\\ 
+$ A \vee (B \wedge C) = (A \vee B) \wedge (A \vee C)$\\
+ 
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Основные законы алгебры логики}
+Законы де Моргана:
+$$ \overline{A \vee B} = \overline{A} \wedge \overline{B} $$
+$$ \overline{A \wedge B} = \overline{A} \vee \overline{B} $$ \pause
+
+Поглощение:
+$$ A \vee A\wedge B =A$$ \pause
+
+Склейка
+$$ x_1\wedge x_2 \wedge x_3 \vee x_1\wedge \overline{x_2} \wedge x_3 = x_1 \wedge x_3$$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Примитивные формулы}
+Конъюнкция:\\
+$ x \wedge x$ =\pause $x$ (идемпотентность)\\
+$ x \wedge \overline{x}$ =\pause $0$\\
+$ x \wedge 1$ =\pause $x$\\
+$ x \wedge 0$ =\pause $0$
+
+Дизъюнкция:\\
+$ x \vee x$ =\pause $x$\\
+$ x \vee \overline{x}$ =\pause $1$ (закон исключения третьего)\\
+$ x \vee 1$ =\pause $1$\\
+$ x \vee 0$ =\pause $x$
+
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Примитивные формулы}
+Тождество:\\
+$ x \equiv x$ =\pause $1$ \\
+$ x \equiv \overline{x}$ =\pause $0$\\
+$ x \equiv 1$ =\pause $x$\\
+$ x \equiv 0$ =\pause $\overline{x}$
+
+Исключающее ИЛИ:\\
+$ x \oplus x$ =\pause $0$\\
+$ x \oplus \overline{x}$ =\pause $1$\\
+$ x \oplus 1$ =\pause $\overline{x}$\\
+$ x \oplus 0$ =\pause $x$
+
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Примитивные формулы}
+Импликация:\\
+$ x \rightarrow x$ =\pause $1$ \\
+$ x \rightarrow \overline{x}$ =\pause $\overline{x}$\\
+$ \overline{x} \rightarrow x $ =\pause $x$\\
+$ x \rightarrow 1$ =\pause $1$\\
+$ 1 \rightarrow x$ =\pause $x$\\
+$ x \rightarrow 0$ =\pause $\overline{x}$
+$ 0 \rightarrow x$ =\pause $1$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Представление формул в стандартном базисе}
+Набор операций: $\overline{\textcolor[rgb]{1,1,1}{x}}, \wedge, \vee$ составляет базис. \pause
+ 
+Через базис можно выразить любые логические функции.
+
+Например:\\
+$x \rightarrow y = \overline{x} \vee y$\\ \pause
+$x \oplus y = \overline{x}\wedge y \vee x\wedge \overline{y}$\\ \pause
+$x \equiv y = \overline{x}\wedge \overline{y} \vee x\wedge y$\\ \pause
+
+
+
+\end{frame}
