@@ -21,8 +21,8 @@
 	\item Битовые операции
 	\item Большее из двух, из трех
 	\item Алгоритм Евклида
+	\item Сумма цифр числа
 	\item Перевод в другую систему счисления
-	\item Сумма и количество цифр числа
 	\item Нахождение делителей числа
 	\item Определение простоты числа
 	\item Решение линейных и квадратных уравнений
@@ -37,29 +37,241 @@
 	\begin{frame}
 \frametitle{Битовые операции}
 
-Переменную можно охарактеризовать шестеркой атрибутов:
-\setlength{\columnsep}{0.4cm}
-\begin{multicols}{2}
-\begin{enumerate}
-\item имя
-\item адрес
-\item значение
-\item тип
-\item время жизни
-\item область видимости.
-\end{enumerate}
+Над битами двух целых операндов можно выполнять логические операции: \texttt{not, and, or, xor}. 
 
-\columnbreak
- \small
-Область видимости - это часть текста программы, в которой может быть использован данный объект. Объект считается видимым в блоке или в исходном файле, если в этом блоке или файле известны имя и тип объекта. 
-\end{multicols}
+Отличие между побитовыми и логическими операциями состоит в том, что побитовые (поразрядные) операции выполняются над отдельными битами операндов, а не над их значением в десятичном (обычно) представлении.
+
+\end{frame}
+
+	\begin{frame}
+\frametitle{Битовые операции}
+
+В Паскаль определены еще две операции shl и shr, которые сдвигают последовательность битов на заданное число позиций влево или вправо соответственно. 
+
+При этом биты, которые выходят за разрядную сетку, теряются. 
+
+При выполнении операции shl освободившиеся справа биты заполняются нулями. 
+
+При выполнении операции shr освободившиеся слева биты заполняются единицами при сдвиге вправо отрицательных значений и нулями в случае положительных значений.
 
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Пример кода}
+\frametitle{Пример битовых операций}
 
-\lstinputlisting[language=Delphi]{prg/ex01.pas}
+\lstinputlisting[style=CStyle]{prg/ex00.pas}
 
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Задачи на битовые операции}
+
+\begin{itemize}
+ \item Определить является ли число степенью двойки
+ \item Проверить число на четность
+ \item вычислить $(-1)^n$
+ \item Обнулить крайний правый бит числа
+ \item Получить следующее большее число с тем же количеством единичных бита
+ \item и другие (Г. Уоррен Алгоритмические трюки для программистов)
+ 
+\end{itemize}
+
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Большее из двух}
+
+\lstinputlisting[style=CStyle]{prg/ex01.pas}
+
+При всей простоте это довольно популярный алгоритм. Сравнение двух переменных может быть реализовано достаточно сложным способом.
+
+Например, попробуйте придумать сравнение при котором $7>65$.
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Большее из трех}
+
+\lstinputlisting[style=CStyle]{prg/ex02.pas}
+
+Первый вариант хуже чем второй и третий, так как в некоторых случаях выполнится несколько условных операторов.
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Алгоритм Евклида}
+
+Алгоритм Евклида — это способ нахождения наибольшего общего делителя (НОД) двух целых чисел. Оригинальная версия алгоритма, когда НОД находится вычитанием, была открыта Евклидом (III в. до н. э). В настоящее время чаще при вычислении НОД алгоритмом Евклида используют деление, так как данный метод эффективнее.
+
+Наибольший общий делитель пары чисел – это самое большое число, которое нацело делит оба числа пары. 
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Алгоритм Евклида}
+\framesubtitle{Вычитание}
+
+\lstinputlisting[style=CStyle]{prg/ex03.pas}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Алгоритм Евклида}
+\framesubtitle{Деление}
+
+\lstinputlisting[style=CStyle]{prg/ex04.pas}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Алгоритм Евклида}
+\framesubtitle{Рекурсия}
+
+\lstinputlisting[style=CStyle]{prg/ex05.pas}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Сумма цифр числа}
+
+Алгоритм решения задачи: 
+\begin{enumerate}
+\item сумме присвоить ноль.
+\item Пока n больше нуля
+\item найти остаток от деления n на 10 (т.е. последнюю цифру числа), добавить его к сумме и увеличить произведение;
+\item избавиться от последнего разряда числа n путем деления нацело на число 10.
+\end{enumerate}
+
+    
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Сумма цифр числа}
+
+\lstinputlisting[style=CStyle]{prg/ex06.pas}
+
+Как можно модифицировать алгоритм, чтобы найти количество цифр? наибольшую цифру?
+
+Что произойдет если 10 заменить на 8?
+
+    
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Перевод в другую систему счисления}
+
+Используем стандартный алгоритм: деление с остатком на основание системы счисления. Последовательность остатков образует цифры нового числа. 
+
+Основная проблема: цифры нового числа получаются в обратном порядке.
+
+Способы решения:
+\begin{enumerate}
+ \item рекурсивная функция
+ \item запись в новое число
+ \item массив
+\end{enumerate}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Перевод из десятичной в двоичную}
+\framesubtitle{Рекурсия}
+
+\lstinputlisting[style=CStyle]{prg/ex07.pas}
+
+    
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Перевод из десятичной в двоичную}
+\framesubtitle{Запись в новое число}
+
+\lstinputlisting[style=CStyle]{prg/ex08.pas}
+
+    
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Делители числа}
+\framesubtitle{Вариант 1}
+\lstinputlisting[style=CStyle]{prg/ex09.pas}
+
+    
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Делители числа}
+\framesubtitle{Вариант 2}
+\lstinputlisting[style=CStyle]{prg/ex10.pas}
+
+    
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Простое число}
+Используем тот факт, что если у числа $n$ есть делитель, то он находится в интервале $[2;\sqrt{n}]$
+
+\lstinputlisting[style=CStyle]{prg/ex11.pas}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Простое число}
+
+\begin{enumerate}
+ \item использовать меньший интервал (гипотеза Римана)
+ \item использовать список простых числел в качестве делителей
+ \item решето Эратосфена
+\end{enumerate}
+
+    
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Решение линейного уравнения}
+
+Решим уравнение $ax+b=0$.
+
+\lstinputlisting[style=CStyle]{prg/ex12.pas}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Решение квадратного уравнения}
+
+Решим уравнение $ax^2+bx+c=0$.
+
+\lstinputlisting[style=CStyle]{prg/ex13.pas}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Табулирование функции}
+
+Задача табулирования (вывод значений с шагом) функции $f(x)=x^2-3x+2$ на отрезке $[a,b]$ с шагом $h$.
+
+\lstinputlisting[style=CStyle]{prg/ex14.pas}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Наибольшее заначение функции на отезке с шагом}
+
+Задача поиск максимума функции $f(x)=x^2-3x+2$ на отрезке $[a,b]$ с шагом $h$.
+\lstinputlisting[style=CStyle]{prg/ex15.pas}
+    
+\end{frame}
+
+\begin{frame}
+\frametitle{Программирование}
+
+\begin{center}
+
+\Huge
+Примеры решения задач
+\end{center}
+\end{frame}
